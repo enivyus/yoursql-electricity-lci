@@ -1,0 +1,2 @@
+process_id,name,domain,reporting_level,reference_basis,functional_unit,system_boundary,allocation_method,data_period,year_type,publication_year,location_id,source_id
+1,"Electricity and steam production, natural gas CHP (case study), Thailand",Electricity & Power Generation,plant,การเดินเครื่อง 1 ปี (ปริมาณรวมรายปีตาม Table 1),ไฟฟ้า 1 kWh และไอน้ำ 1 ตัน,cradle-to-gate,efficiency method (WRI/WBCSD) ประสิทธิภาพไฟฟ้า 53% ไอน้ำ 80%,ไม่ระบุ,ไม่ระบุ,2017,1,SRC-08

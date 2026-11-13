@@ -1,0 +1,11 @@
+source_id,title,publisher,year,url,source_ref,reporting_level,license_status,license_note
+SRC-01,"Electricity Statistic ตาราง 5.1-1, 5.2-1, 5.2-2, 5.2-5",EPPO,1986–2025; 2026 รายเดือน,https://www.eppo.go.th/energy-statistics/electricity-statistic/,EPPO-T05-01-01;EPPO-T05-02-01;EPPO-T05-02-02;EPPO-T05-02-05,egat_system,unconfirmed,หน่วยงานรัฐ ยังไม่ตรวจเงื่อนไขการใช้ซ้ำ
+SRC-02,"Electricity Statistic ตาราง 5.3-4, 5.4-1, 5.5-1, 5.5-2",EPPO,1986–2025,https://www.eppo.go.th/energy-statistics/electricity-statistic/,EPPO-T05-03-04;EPPO-T05-04-01;EPPO-T05-05-01;EPPO-T05-05-02,country,unconfirmed,
+SRC-03,"CO2 Statistic ตาราง 9.1-3, 9.1-15",EPPO,1986–2025,https://www.eppo.go.th/energy-statistics/co2-statistic/,EPPO-T09-01-03;EPPO-T09-01-15,country,unconfirmed,
+SRC-04,System Installed / Contracted Generating Capacity,EGAT,snapshot 2026-01,https://www.egat.co.th/home/en/statistics-all-latest/,EGAT-STAT-INSTALLED;EGAT-STAT-CONTRACTED-202601,egat_system,unconfirmed,
+SRC-05,Sustainability — Energy Management,EGAT,2022–2024,https://www.egat.co.th/sustainability/en/environment/energy/,EGAT-SUS-ENERGY-2024,organization,unconfirmed,สิทธิเผยแพร่ซ้ำยังไม่ยืนยัน
+SRC-06,Statistical Yearbook Thailand 2026 ตาราง 13.1–13.3,NSO,2026,https://www.nso.go.th/public/e-book/Statistical-Yearbook/SYB-2026_webPage/File_SYB/2026/Full/Statistical_Yearbook_Thailand_2026.pdf,NSO-SYB2026-13.1;NSO-SYB2026-13.2;NSO-SYB2026-13.3,country,unconfirmed,
+SRC-07,Emission Factor from Electricity Generation/Consumption for GHG Mitigation Projects and Activities,TGO,2025 (ปีข้อมูล 2018–2022),https://tver.tgo.or.th/database/Uploads/Document/f4d7230b-05b4-4a03-adcf-b4123fb3a224.pdf,TGO-EF-20250528,reference_value,unconfirmed,
+SRC-08,"Usapein, P.; Chavalparit, O. Life Cycle Assessment of Producing Electricity in Thailand: A Case Study of Natural Gas Power Plant. MATEC Web of Conferences 103, 05009",MATEC Web of Conferences (EDP Sciences),2017,https://doi.org/10.1051/matecconf/201710305009,MATEC-103-05009-T1;MATEC-103-05009-T2,plant,confirmed,CC BY 4.0
+SRC-09,Thailand PV Status Report 2023 หัวข้อ 1.1,DEDE,2023,https://pvstatus.dede.go.th/en/section_1-1.php,DEDE-PVSTATUS-2023-S1.1,country,unconfirmed,
+SRC-10,Thailand country data,Ember,2026-04-22,https://ember-energy.org/countries-and-regions/thailand/,EMBER-TH-202604,country,unconfirmed,ต้องตรวจเงื่อนไขสิทธิการใช้งาน

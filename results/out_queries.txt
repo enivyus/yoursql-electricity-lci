@@ -1,0 +1,186 @@
+-- CN230 S2-G01 · M3 · Query ที่ตอบ Requirement (ใช้ในตาราง Traceability บทที่ 6)
+-- Q01 · DR-06 · นำเข้า LCI Exchange ของ SRC-08 ครบ 29 รายการ (Table 1) + Reference Flow 2 รายการ
+table1_rows
+29
+
+reference_rows
+2
+
+-- Q02 · DR-06 · รายการที่เป็นความเข้มข้น/รูปแบบตัวเลขผิดปกติ ต้องอยู่ในสถานะพักไว้รอตรวจบริบท
+exchange_id | name | amount_original | unit_original | review_status
+20 | NOx | 15,1361 | kgNOx | held_context
+23 | BOD | 6.09 | mg/l | held_context
+24 | COD | 52 | mg/l | held_context
+25 | Suspended solid | 25 | mg/l | held_context
+26 | Dissolved solid | 1,646 | mg/l | held_context
+
+-- Q03 · DR-02 · ค่าที่ขาด snapshot หรือตำแหน่งในแหล่ง (คาดหวัง 0)
+missing_provenance
+0
+
+-- Q04 · DR-01 · ค่าตัวเลขตรงกับค่าต้นฉบับทุกแถวที่แปลงได้ (คาดหวัง 0 แถวไม่ตรง)
+mismatch
+0
+
+-- Q05 · BR-03 · ค่าที่อ่านไม่ได้ต้องไม่ถูกแปลงเป็น 0 (คาดหวัง 0)
+blank_to_zero
+0
+
+-- Q06 · BR-02 · ผลรวมต่อหน่วยฐาน: แต่ละกลุ่มมีหน่วยฐานเดียว (ไม่ปน MJ กับ kg)
+quantity | base_symbol | n | total_base
+energy | MJ | 1 | 5924160768.634
+mass | kg | 13 | 447500.0
+volume | m3 | 4 | 1098154.725
+
+-- Q07 · FR-04 · สรุป Exchange ขาเข้า/ขาออกของ Process CHP แยกตามปลายทางและสถานะ
+direction | compartment | flow_type | review_status | n
+IN | resource | elementary | reviewed | 1
+IN | resource | technosphere | reviewed | 1
+IN | technosphere | technosphere | reviewed | 16
+OUT | air | elementary | held_context | 1
+OUT | air | elementary | reviewed | 3
+OUT | technosphere | product | reviewed | 2
+OUT | technosphere | waste | reviewed | 3
+OUT | water | elementary | held_context | 4
+
+-- Q08 · FR-02 · รายละเอียดของรายการ CO2 พร้อม Provenance และสถานะ
+exchange_id | flow | amount_original | unit_original | reporting_level | source_id | source_ref | location_in_source | snapshot_file | review_status | license_status
+21 | CO2 | 324,686,938 | kgCO2 | plant | SRC-08 | MATEC-103-05009-T1;MATEC-103-05009-T2 | Table 1 (p.5) แถว 21 | SNAP-SRC08-20261109_matecconf_iscee2017_05009.pdf | reviewed | confirmed
+
+-- Q09 · FR-06 · ชุดข้อมูลสำหรับส่งออก (ค่าเริ่มต้นไม่รวมรายการพักตรวจ) พร้อม source_id และสิทธิ
+export_rows | missing_license
+26 | 0
+
+-- Q10 · BR-01 · Exchange ทุกแถวอยู่ใน Process ระดับการรายงานเดียว (คาดหวัง 1 ระดับ)
+reporting_level | n
+plant | 31
+
+-- Q11 · DR-05 · สถานะการทบทวนแยกจากสถานะสิทธิ (นับรายการตามคู่สถานะ)
+source_id | license_status | review_status | n
+SRC-08 | confirmed | held_context | 5
+SRC-08 | confirmed | reviewed | 26
+
+-- Q12 · FR-09 + BR-05 · เปลี่ยนสถานะ 1 รายการ แล้วมีประวัติ ค่าข้อมูลไม่เปลี่ยน (ทดสอบใน transaction แล้ว ROLLBACK)
+
+
+
+history_id | exchange_id | old_status | new_status | changed_by | reason
+1 | 1 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+2 | 2 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+3 | 3 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+4 | 4 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+5 | 5 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+6 | 6 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+7 | 7 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+8 | 8 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+9 | 9 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+10 | 10 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+11 | 11 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+12 | 12 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+13 | 13 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+14 | 14 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+15 | 15 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+16 | 16 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+17 | 17 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+18 | 18 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+19 | 19 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+20 | 21 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+21 | 22 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+22 | 27 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+23 | 28 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+24 | 29 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+25 | 30 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+26 | 31 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+
+exchange_id | amount_original | review_status
+19 | 21,030 | reviewed
+
+
+-- Q13 · DR-04 / 2.5 · ช่องบริบทที่แหล่งไม่ระบุถูกบันทึกเป็น "ไม่ระบุ" ไม่ใช่ค่าว่าง
+data_period | year_type | n
+ไม่ระบุ | ไม่ระบุ | 1
+
+-- Q14 · Index (W12) · แผนการ Query ใช้ดัชนี idx_exchange_process_flow
+id | parent | notused | detail
+4 | 0 | 45 | SEARCH f USING INTEGER PRIMARY KEY (rowid=?)
+8 | 0 | 60 | SEARCH e USING INDEX idx_exchange_process_flow (process_id=? AND flow_id=?)
+
+-- ===== สถิติไฟฟ้า SRC-01 (EPPO) =====
+-- Q15 · FR-01 · กรองการผลิตไฟฟ้ารายปีตามปีและชนิดเชื้อเพลิง (ตัวอย่าง: ก๊าซธรรมชาติ 2021–2025)
+year_ce | category | gwh
+2021 | Natural Gas | 113112.85948500001
+2022 | Natural Gas | 114636.80476299998
+2023 | Natural Gas | 129402.01379899
+2024 | Natural Gas | 136372.870679
+2025 | Natural Gas | 123334.39089898
+
+-- Q16 · FR-01 · กรองตามเดือนและเชื้อเพลิง และเมื่อไม่พบข้อมูลต้องได้ 0 แถว (ตัวอย่าง: ก.ย. 2026 ยังไม่มีข้อมูล)
+rows_sep_2026
+0
+
+-- Q17 · FR-01 · กรองกำลังผลิตติดตั้งตามประเภทผู้ผลิต (ปี 2025)
+category | mw | capacity_type
+Total | 49962.11 | installed
+IPP | 18158.5 | installed
+EGAT | 16235.02 | installed
+SPP | 9333.69 | installed
+Imported | 6234.9 | installed
+
+-- Q18 · FR-03 / BR-08 · อนุกรมเวลารายปี ไม่รวมปีที่เป็นข้อมูลเบื้องต้น (ปีล่าสุดต้องเป็น 2025)
+first_year | last_year | n_years
+1986 | 2025 | 40
+
+-- Q19 · BR-08 · ข้อมูลปี 2026 ทุกแถวเป็นข้อมูลเบื้องต้นและเป็นรายเดือนเท่านั้น (คาดหวัง yearly = 0)
+frequency | is_preliminary | n
+monthly | 1 | 100
+
+-- Q20 · DR-03 · ป้ายปีตามต้นฉบับแยกจากปี ค.ศ. และไม่มีแถวที่ขาดบริบทเวลา (คาดหวัง 0)
+missing_time_context
+0
+
+-- Q21 · DR-04 · ฐานการผลิต gross/net ของ 5.2-5Y ตามหมายเหตุของแหล่ง (ช่วงที่ไม่ระบุ = "ไม่ระบุ")
+generation_basis | from_year | to_year | n
+gross | 1986 | 2008 | 23
+net | 2009 | 2017 | 9
+ไม่ระบุ | 2018 | 2025 | 8
+
+-- Q22 · BR-03 · ค่าว่างในต้นฉบับเก็บเป็น blank ไม่ถูกแปลงเป็น 0
+dataset_ref | year_ce | month | category | value_original | value_flag
+EPPO-T05-02-02 | 1986 |  | Renewable Energy |  | blank
+EPPO-T05-02-05M | 2026 | 9 | Total |  | blank
+EPPO-T05-02-05M | 2026 | 9 | Total |  | blank
+EPPO-T05-02-05M | 2026 | 9 | Total |  | blank
+EPPO-T05-02-05M | 2026 | 10 | Total |  | blank
+
+blank_rows
+13
+
+-- Q23 · BR-04 / FR-07 · เทียบยอดรายปี 2025 (5.2-2Y) กับผลรวม 12 เดือน 2025 (5.2-2 รายเดือน) ต่อเชื้อเพลิง
+category | yearly | sum_monthly | months | status
+Coal & Lignite | 33578.796 | 33578.796 | 12 | ตรงกัน
+Diesel | 32.859 | 32.859 | 12 | ตรงกัน
+Fuel Oil | 100.362 | 100.362 | 12 | ต่างเพราะปัดเศษ
+Hydro Electricity | 7618.967 | 7618.967 | 12 | ต่างเพราะปัดเศษ
+Imported | 39135.874 | 39135.874 | 12 | ต่างเพราะปัดเศษ
+Natural Gas | 123334.391 | 123334.391 | 12 | ตรงกัน
+Renewable Energy | 23622.822 | 23622.822 | 12 | ต่างเพราะปัดเศษ
+Total | 227424.073 | 227424.073 | 12 | ต่างเพราะปัดเศษ
+
+-- Q24 · BR-02 / BR-04 · การผลิตรวม 5.2-2Y เทียบกับ 5.2-5Y: ฐานการผลิตไม่ตรงกัน จึงต้องได้ "เปรียบเทียบไม่ได้"
+year_ce | gen_5_2_2 | gen_5_2_5 | basis_a | basis_b | status
+2008 | 148220.9 | 148264.3 | ไม่ระบุ | gross | เปรียบเทียบไม่ได้
+2017 | 201165.5 | 188970.2 | ไม่ระบุ | net | เปรียบเทียบไม่ได้
+2025 | 227424.1 | 212716.4 | ไม่ระบุ | ไม่ระบุ | เปรียบเทียบไม่ได้
+
+-- Q25 · BR-01 · ไม่มี Query ใดรวม stat_observation กับ lci_exchange · ระดับการรายงานของสถิติ
+reporting_level | n
+egat_system | 857
+
+-- Q26 · DR-02 · สถิติทุกแถวมีตำแหน่งเซลล์และ snapshot (คาดหวัง 0)
+missing_provenance
+0
+
+-- Q27 · Index · แผน Query ของ FR-01 ใช้ idx_stat_lookup
+id | parent | notused | detail
+3 | 0 | 58 | SEARCH stat_observation USING INDEX idx_stat_lookup (measure=? AND frequency=? AND year_ce=? AND category=?)
+

@@ -1,0 +1,183 @@
+table,item,check,result,note
+lci_exchange,1,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,2,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,3,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,4,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,5,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,6,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,7,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,8,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,9,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,10,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,11,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,12,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,13,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,14,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,15,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,16,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,17,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,18,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,19,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,20,SRC-08 PDF recheck,pass,held_context คงเดิม
+lci_exchange,21,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,22,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,23,SRC-08 PDF recheck,pass,held_context คงเดิม
+lci_exchange,24,SRC-08 PDF recheck,pass,held_context คงเดิม
+lci_exchange,25,SRC-08 PDF recheck,pass,held_context คงเดิม
+lci_exchange,26,SRC-08 PDF recheck,pass,held_context คงเดิม
+lci_exchange,27,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,28,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,29,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,30,SRC-08 PDF recheck,pass,→ reviewed
+lci_exchange,31,SRC-08 PDF recheck,pass,→ reviewed
+stat_observation,EPPO-T05-02-02 1986-00,sum = Total,pass,sum=25428.19 total=25428.190000000002
+stat_observation,EPPO-T05-02-02 1987-00,sum = Total,pass,sum=28989.06 total=28989.06
+stat_observation,EPPO-T05-02-02 1988-00,sum = Total,pass,sum=32843.02 total=32843.02
+stat_observation,EPPO-T05-02-02 1989-00,sum = Total,pass,sum=37996.53 total=37996.52999999999
+stat_observation,EPPO-T05-02-02 1990-00,sum = Total,pass,sum=44764.83 total=44764.82900000001
+stat_observation,EPPO-T05-02-02 1991-00,sum = Total,pass,sum=50713.50 total=50713.49699999999
+stat_observation,EPPO-T05-02-02 1992-00,sum = Total,pass,sum=57508.05 total=57508.049000000006
+stat_observation,EPPO-T05-02-02 1993-00,sum = Total,pass,sum=63981.85 total=63981.84500000001
+stat_observation,EPPO-T05-02-02 1994-00,sum = Total,pass,sum=71973.24 total=71973.249
+stat_observation,EPPO-T05-02-02 1995-00,sum = Total,pass,sum=80436.33 total=80436.32799999998
+stat_observation,EPPO-T05-02-02 1996-00,sum = Total,pass,sum=87797.24 total=87797.23799999997
+stat_observation,EPPO-T05-02-02 1997-00,sum = Total,pass,sum=93407.39 total=93406.905
+stat_observation,EPPO-T05-02-02 1998-00,sum = Total,pass,sum=91155.72 total=91155.723
+stat_observation,EPPO-T05-02-02 1999-00,sum = Total,pass,sum=92436.98 total=92470.94999999997
+stat_observation,EPPO-T05-02-02 2000-00,sum = Total,pass,sum=98395.86 total=98487.51800000001
+stat_observation,EPPO-T05-02-02 2001-00,sum = Total,pass,sum=103869.98 total=103868.90100000003
+stat_observation,EPPO-T05-02-02 2002-00,sum = Total,pass,sum=111253.63 total=111253.86899999995
+stat_observation,EPPO-T05-02-02 2003-00,sum = Total,pass,sum=118411.44 total=118411.44099999998
+stat_observation,EPPO-T05-02-02 2004-00,sum = Total,pass,sum=127510.22 total=127510.514
+stat_observation,EPPO-T05-02-02 2005-00,sum = Total,pass,sum=134798.11 total=134798.195
+stat_observation,EPPO-T05-02-02 2006-00,sum = Total,pass,sum=141918.57 total=141918.569
+stat_observation,EPPO-T05-02-02 2007-00,sum = Total,pass,sum=147025.89 total=147025.894
+stat_observation,EPPO-T05-02-02 2008-00,sum = Total,pass,sum=148220.93 total=148220.93099999995
+stat_observation,EPPO-T05-02-02 2009-00,sum = Total,pass,sum=148358.11 total=148358.11199999996
+stat_observation,EPPO-T05-02-02 2010-00,sum = Total,pass,sum=164828.80 total=164828.80511200006
+stat_observation,EPPO-T05-02-02 2011-00,sum = Total,pass,sum=164089.92 total=164089.9157739999
+stat_observation,EPPO-T05-02-02 2012-00,sum = Total,pass,sum=179483.61 total=179483.608883
+stat_observation,EPPO-T05-02-02 2013-00,sum = Total,pass,sum=181205.46 total=181205.45132727988
+stat_observation,EPPO-T05-02-02 2014-00,sum = Total,pass,sum=186023.89 total=186023.893391
+stat_observation,EPPO-T05-02-02 2015-00,sum = Total,pass,sum=192246.43 total=192246.41426699996
+stat_observation,EPPO-T05-02-02 2016-00,sum = Total,pass,sum=199653.88 total=199653.87422599996
+stat_observation,EPPO-T05-02-02 2017-00,sum = Total,pass,sum=201165.54 total=201165.53096600008
+stat_observation,EPPO-T05-02-02 2018-00,sum = Total,pass,sum=204428.00 total=204428.00370099998
+stat_observation,EPPO-T05-02-02 2019-00,sum = Total,pass,sum=212049.68 total=212049.676613
+stat_observation,EPPO-T05-02-02 2020-00,sum = Total,pass,sum=206023.25 total=206023.2490689999
+stat_observation,EPPO-T05-02-02 2021-00,sum = Total,pass,sum=209716.77 total=209716.76842399992
+stat_observation,EPPO-T05-02-02 2022-00,sum = Total,pass,sum=215837.84 total=215837.84422999996
+stat_observation,EPPO-T05-02-02 2023-00,sum = Total,pass,sum=223283.27 total=223283.26193585002
+stat_observation,EPPO-T05-02-02 2024-00,sum = Total,pass,sum=235512.42 total=235512.41572599998
+stat_observation,EPPO-T05-02-02 2025-00,sum = Total,pass,sum=227424.07 total=227424.07286599994
+stat_observation,EPPO-T05-02-02M 2024-01,sum = Total,pass,sum=18300.75 total=18300.752613999997
+stat_observation,EPPO-T05-02-02M 2024-02,sum = Total,pass,sum=18632.56 total=18632.563077999996
+stat_observation,EPPO-T05-02-02M 2024-03,sum = Total,pass,sum=21400.94 total=21400.940079
+stat_observation,EPPO-T05-02-02M 2024-04,sum = Total,pass,sum=21835.81 total=21835.806934000004
+stat_observation,EPPO-T05-02-02M 2024-05,sum = Total,pass,sum=21804.91 total=21804.908353
+stat_observation,EPPO-T05-02-02M 2024-06,sum = Total,pass,sum=20081.25 total=20081.248133
+stat_observation,EPPO-T05-02-02M 2024-07,sum = Total,pass,sum=19424.06 total=19424.058886
+stat_observation,EPPO-T05-02-02M 2024-08,sum = Total,pass,sum=19932.75 total=19932.750894999997
+stat_observation,EPPO-T05-02-02M 2024-09,sum = Total,pass,sum=18963.19 total=18963.193704999998
+stat_observation,EPPO-T05-02-02M 2024-10,sum = Total,pass,sum=19525.69 total=19525.689874
+stat_observation,EPPO-T05-02-02M 2024-11,sum = Total,pass,sum=18451.64 total=18451.636498
+stat_observation,EPPO-T05-02-02M 2024-12,sum = Total,pass,sum=17158.87 total=17158.866677
+stat_observation,EPPO-T05-02-02M 2025-01,sum = Total,pass,sum=16503.35 total=16503.348665999998
+stat_observation,EPPO-T05-02-02M 2025-02,sum = Total,pass,sum=17131.01 total=17131.008578999998
+stat_observation,EPPO-T05-02-02M 2025-03,sum = Total,pass,sum=20638.02 total=20638.019322
+stat_observation,EPPO-T05-02-02M 2025-04,sum = Total,pass,sum=19907.99 total=19907.991502999997
+stat_observation,EPPO-T05-02-02M 2025-05,sum = Total,pass,sum=20417.15 total=20417.155930999998
+stat_observation,EPPO-T05-02-02M 2025-06,sum = Total,pass,sum=19546.96 total=19546.964394000002
+stat_observation,EPPO-T05-02-02M 2025-07,sum = Total,pass,sum=19763.45 total=19763.449352
+stat_observation,EPPO-T05-02-02M 2025-08,sum = Total,pass,sum=20097.64 total=20097.644472
+stat_observation,EPPO-T05-02-02M 2025-09,sum = Total,pass,sum=19075.17 total=19075.172034000003
+stat_observation,EPPO-T05-02-02M 2025-10,sum = Total,pass,sum=19441.41 total=19441.408064000003
+stat_observation,EPPO-T05-02-02M 2025-11,sum = Total,pass,sum=17319.72 total=17319.717262
+stat_observation,EPPO-T05-02-02M 2025-12,sum = Total,pass,sum=17582.19 total=17582.193287
+stat_observation,EPPO-T05-02-02M 2026-01,sum = Total,pass,sum=17129.38 total=17129.37755
+stat_observation,EPPO-T05-02-02M 2026-02,sum = Total,pass,sum=17901.92 total=17901.920089
+stat_observation,EPPO-T05-02-02M 2026-03,sum = Total,pass,sum=20929.21 total=20929.209253
+stat_observation,EPPO-T05-02-02M 2026-04,sum = Total,pass,sum=21458.61 total=21458.610457000002
+stat_observation,EPPO-T05-02-02M 2026-05,sum = Total,pass,sum=21637.28 total=21637.276075
+stat_observation,EPPO-T05-02-02M 2026-06,sum = Total,pass,sum=20820.99 total=20820.983884
+stat_observation,EPPO-T05-02-02M 2026-07,sum = Total,pass,sum=20708.31 total=20708.308707
+stat_observation,EPPO-T05-02-02M 2026-08,sum = Total,pass,sum=20724.70 total=20724.698892999997
+stat_observation,EPPO-T05-01-01 2001-00,sum = Total,pass,sum=22034.00 total=22034.0
+stat_observation,EPPO-T05-01-01 2002-00,sum = Total,pass,sum=24479.00 total=24479.0
+stat_observation,EPPO-T05-01-01 2003-00,sum = Total,pass,sum=24983.00 total=24983.0
+stat_observation,EPPO-T05-01-01 2004-00,sum = Total,pass,sum=26056.00 total=26056.0
+stat_observation,EPPO-T05-01-01 2005-00,sum = Total,pass,sum=26451.00 total=26450.0
+stat_observation,EPPO-T05-01-01 2006-00,sum = Total,pass,sum=27107.00 total=27106.0
+stat_observation,EPPO-T05-01-01 2007-00,sum = Total,pass,sum=28530.00 total=28530.0
+stat_observation,EPPO-T05-01-01 2008-00,sum = Total,pass,sum=29892.00 total=29892.0
+stat_observation,EPPO-T05-01-01 2009-00,sum = Total,pass,sum=29212.00 total=29212.0
+stat_observation,EPPO-T05-01-01 2010-00,sum = Total,pass,sum=30920.00 total=30920.0
+stat_observation,EPPO-T05-01-01 2011-00,sum = Total,pass,sum=31447.00 total=31447.0
+stat_observation,EPPO-T05-01-01 2012-00,sum = Total,pass,sum=32600.00 total=32600.0
+stat_observation,EPPO-T05-01-01 2013-00,sum = Total,pass,sum=33681.02 total=33681.02
+stat_observation,EPPO-T05-01-01 2014-00,sum = Total,pass,sum=34668.13 total=34668.13
+stat_observation,EPPO-T05-01-01 2015-00,sum = Total,pass,sum=38814.65 total=38814.649999999994
+stat_observation,EPPO-T05-01-01 2016-00,sum = Total,pass,sum=41557.00 total=41556.0
+stat_observation,EPPO-T05-01-01 2017-00,sum = Total,pass,sum=42434.00 total=42433.0
+stat_observation,EPPO-T05-01-01 2018-00,sum = Total,pass,sum=43374.00 total=43374.0
+stat_observation,EPPO-T05-01-01 2019-00,sum = Total,pass,sum=45296.90 total=45297.0
+stat_observation,EPPO-T05-01-01 2020-00,sum = Total,pass,sum=45480.37 total=45480.37
+stat_observation,EPPO-T05-01-01 2021-00,sum = Total,pass,sum=46682.37 total=46682.37
+stat_observation,EPPO-T05-01-01 2022-00,sum = Total,pass,sum=49098.48 total=49098.48
+stat_observation,EPPO-T05-01-01 2023-00,sum = Total,pass,sum=49603.00 total=49603.0
+stat_observation,EPPO-T05-01-01 2024-00,sum = Total,pass,sum=51414.00 total=51414.0
+stat_observation,EPPO-T05-01-01 2025-00,sum = Total,pass,sum=49962.11 total=49962.11
+stat_observation,EPPO-T05-02-05 1986-00,load factor,pass,diff=-0.005 pp
+stat_observation,EPPO-T05-02-05 1987-00,load factor,pass,diff=-0.008 pp
+stat_observation,EPPO-T05-02-05 1988-00,load factor,pass,diff=-0.001 pp
+stat_observation,EPPO-T05-02-05 1989-00,load factor,pass,diff=-0.008 pp
+stat_observation,EPPO-T05-02-05 1990-00,load factor,pass,diff=-0.005 pp
+stat_observation,EPPO-T05-02-05 1991-00,load factor,pass,diff=-0.000 pp
+stat_observation,EPPO-T05-02-05 1992-00,load factor,pass,diff=-0.003 pp
+stat_observation,EPPO-T05-02-05 1993-00,load factor,pass,diff=-0.001 pp
+stat_observation,EPPO-T05-02-05 1994-00,load factor,pass,diff=0.000 pp
+stat_observation,EPPO-T05-02-05 1995-00,load factor,pass,diff=-0.008 pp
+stat_observation,EPPO-T05-02-05 1996-00,load factor,pass,diff=-0.010 pp
+stat_observation,EPPO-T05-02-05 1997-00,load factor,pass,diff=-0.006 pp
+stat_observation,EPPO-T05-02-05 1998-00,load factor,pass,diff=-0.005 pp
+stat_observation,EPPO-T05-02-05 1999-00,load factor,pass,diff=-0.002 pp
+stat_observation,EPPO-T05-02-05 2000-00,load factor,pass,diff=-0.007 pp
+stat_observation,EPPO-T05-02-05 2001-00,load factor,pass,diff=-0.007 pp
+stat_observation,EPPO-T05-02-05 2002-00,load factor,pass,diff=-0.007 pp
+stat_observation,EPPO-T05-02-05 2003-00,load factor,pass,diff=-0.007 pp
+stat_observation,EPPO-T05-02-05 2004-00,load factor,pass,diff=-0.003 pp
+stat_observation,EPPO-T05-02-05 2005-00,load factor,pass,diff=-0.006 pp
+stat_observation,EPPO-T05-02-05 2006-00,load factor,pass,diff=-0.002 pp
+stat_observation,EPPO-T05-02-05 2007-00,load factor,pass,diff=-0.010 pp
+stat_observation,EPPO-T05-02-05 2008-00,load factor,pass,diff=-0.001 pp
+stat_observation,EPPO-T05-02-05 2009-00,load factor,pass,diff=0.002 pp
+stat_observation,EPPO-T05-02-05 2010-00,load factor,pass,diff=-0.004 pp
+stat_observation,EPPO-T05-02-05 2011-00,load factor,pass,diff=-0.003 pp
+stat_observation,EPPO-T05-02-05 2012-00,load factor,pass,diff=0.002 pp
+stat_observation,EPPO-T05-02-05 2013-00,load factor,pass,diff=-0.001 pp
+stat_observation,EPPO-T05-02-05 2014-00,load factor,pass,diff=0.003 pp
+stat_observation,EPPO-T05-02-05 2015-00,load factor,pass,diff=-0.001 pp
+stat_observation,EPPO-T05-02-05 2016-00,load factor,pass,diff=-0.019 pp
+stat_observation,EPPO-T05-02-05 2017-00,load factor,pass,diff=-0.004 pp
+stat_observation,EPPO-T05-02-05 2018-00,load factor,pass,diff=0.004 pp
+stat_observation,EPPO-T05-02-05 2019-00,load factor,pass,diff=-0.005 pp
+stat_observation,EPPO-T05-02-05 2020-00,load factor,pass,diff=-0.004 pp
+stat_observation,EPPO-T05-02-05 2021-00,load factor,pass,diff=-0.004 pp
+stat_observation,EPPO-T05-02-05 2022-00,load factor,pass,diff=0.001 pp
+stat_observation,EPPO-T05-02-05 2023-00,load factor,pass,diff=-0.003 pp
+stat_observation,EPPO-T05-02-05 2024-00,load factor,pass,diff=-0.000 pp
+stat_observation,EPPO-T05-02-05 2025-00,load factor,pass,diff=0.004 pp
+stat_observation,EPPO-T05-02-05M 2026-01,load factor,pass,diff=0.000 pp
+stat_observation,EPPO-T05-02-05M 2026-02,load factor,pass,diff=0.000 pp
+stat_observation,EPPO-T05-02-05M 2026-03,load factor,pass,diff=0.000 pp
+stat_observation,EPPO-T05-02-05M 2026-04,load factor,pass,diff=-0.000 pp
+stat_observation,EPPO-T05-02-05M 2026-05,load factor,pass,diff=0.000 pp
+stat_observation,EPPO-T05-02-05M 2026-06,load factor,pass,diff=0.000 pp
+stat_observation,EPPO-T05-02-05M 2026-07,load factor,pass,diff=-0.000 pp
+stat_observation,EPPO-T05-02-05M 2026-08,load factor,pass,diff=0.000 pp
+stat_observation,EPPO-T05-02-05M 2026-09,load factor,n/a,ต้นฉบับเว้นว่าง (blank)
+stat_observation,EPPO-T05-02-05M 2026-10,load factor,n/a,ต้นฉบับเว้นว่าง (blank)
+stat_observation,EPPO-T05-02-05M 2026-11,load factor,n/a,ต้นฉบับเว้นว่าง (blank)
+stat_observation,EPPO-T05-02-05M 2026-12,load factor,n/a,ต้นฉบับเว้นว่าง (blank)
+stat_observation,ทั้งตาราง,unique key,pass,ซ้ำ 0 กลุ่ม
+stat_observation,ทั้งตาราง,traceable,pass,ขาดหลักฐาน 0 แถว

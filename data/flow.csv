@@ -1,0 +1,30 @@
+flow_id,name,flow_type,compartment,default_unit_id
+1,Natural gas,technosphere,resource,1
+2,Water,elementary,resource,2
+3,Diesel,technosphere,technosphere,3
+4,SF6,technosphere,technosphere,4
+5,H2SO4,technosphere,technosphere,5
+6,NaOH,technosphere,technosphere,5
+7,NaOCl,technosphere,technosphere,5
+8,Cooling water corrosion inhibitor,technosphere,technosphere,5
+9,Oxygen scavenger,technosphere,technosphere,5
+10,Na3PO4,technosphere,technosphere,5
+11,Feed water corrosion inhibitor,technosphere,technosphere,5
+12,Cooling water dispersent,technosphere,technosphere,5
+13,Cooling water biocide,technosphere,technosphere,5
+14,Scale inhibitor,technosphere,technosphere,5
+15,Sodium bisulfate,technosphere,technosphere,5
+16,Closed cooling water circuit corrosion inhibitor,technosphere,technosphere,5
+17,SO2,elementary,air,4
+18,NOx,elementary,air,4
+19,CO2,elementary,air,4
+20,Particulate Matter,elementary,air,4
+21,BOD,elementary,water,6
+22,COD,elementary,water,6
+23,Suspended solid,elementary,water,6
+24,Dissolved solid,elementary,water,6
+25,Municipal waste,waste,technosphere,4
+26,Non-hazardous waste,waste,technosphere,4
+27,Hazardous waste,waste,technosphere,4
+28,Electricity,product,technosphere,7
+29,Steam,product,technosphere,8

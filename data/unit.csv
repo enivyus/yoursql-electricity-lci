@@ -1,0 +1,12 @@
+unit_id,symbol,quantity,base_symbol,to_base_factor
+1,MMBTU,energy,MJ,1055.05585262
+2,m3,volume,m3,1.0
+3,liter,volume,m3,0.001
+4,kg,mass,kg,1.0
+5,tons,mass,kg,1000.0
+6,mg/l,concentration,mg/l,1.0
+7,MWh,energy,MJ,3600.0
+8,ton-steam,mass,kg,1000.0
+9,GWh,energy,MJ,3600000.0
+10,MW,power,MW,1.0
+11,%,ratio,%,1.0
