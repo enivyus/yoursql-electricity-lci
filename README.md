@@ -28,11 +28,13 @@ scripts/build_stats.py ถอดสถิติ EPPO ทีละเซลล์
 scripts/qa_review.py   ตรวจคุณภาพทุกแถว แล้วเปลี่ยนสถานะเป็น reviewed (results/qa_report.csv)
 snapshots/             ไฟล์ต้นฉบับที่ดาวน์โหลด + SHA256SUMS.txt
 results/               ผลการรันจริง
-serving/               หัวข้อ 6.x: Cypher (LOAD CSV … MERGE), embedding, ทริปเปิลสำหรับ W14 Colab
+serving/               หัวข้อ 6.x: Cypher (LOAD CSV … MERGE), embedding, ทริปเปิลสำหรับ W14 Colab และผล (colab_results/)
 docs/                  ERD, SRS ฉบับสมบูรณ์, สไลด์, โปสเตอร์
 ```
 
 ## รันซ้ำ
+
+> ทำในโฟลเดอร์สำเนา: `build_stats.py` เขียนทับ `data/stat_observation.csv` (สถานะกลับเป็น unreviewed จนกว่าจะรัน `qa_review.py`) และ Query Q12 ใน `03_queries.sql` ทดลองเปลี่ยนสถานะ 1 แถว
 
 ```bash
 python scripts/build_stats.py snapshots          # สร้าง data/stat_observation.csv จาก snapshot
