@@ -1,195 +1,224 @@
 import * as React from "react"
-import { ArrowUpRight, Cable, ChevronLeft, ChevronRight, Cloud, Factory, Flame } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
+import { ArrowDown, ArrowUpRight, MousePointerClick } from "lucide-react"
 import { href } from "@/lib/router"
 import { exchanges, headline, latestYear, nf } from "@/lib/data"
 
-const C = {
-  sky: "#e8eef7", hillBack: "#c7d3e5", hillFront: "#97abc9", ground: "#6f86a8",
-  ink: "#1e3a5f", sun: "#f5c542", cream: "#f4efe3", orange: "#f0a830", line: "#f3e3b5",
-}
+const ex = (flow: string) => exchanges.find((e) => e.flow === flow)
 
-function Backdrop({ children }: { children: React.ReactNode }) {
-  return (
-    <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" className="h-full w-full" role="img" aria-hidden>
-      <rect width="400" height="260" fill={C.sky} />
-      <circle cx="330" cy="62" r="30" fill={C.sun} />
-      <path d="M60 60 l10 -18 l-2 12 l10 0 l-12 20 l3 -14z" fill={C.sun} opacity=".9" />
-      <path d="M0 170 C 70 120 140 135 210 160 S 340 120 400 150 V260 H0 Z" fill={C.hillBack} />
-      <path d="M0 205 C 90 175 170 190 250 200 S 360 180 400 190 V260 H0 Z" fill={C.hillFront} />
-      <rect y="228" width="400" height="32" fill={C.ground} />
-      {children}
-    </svg>
-  )
-}
-
-const amount = (flow: string) => exchanges.find((e) => e.flow === flow)
-
-function SceneFuel() {
-  return (
-    <Backdrop>
-      <path d="M-5 214 H150 V196 H200" fill="none" stroke={C.orange} strokeWidth="9" strokeLinejoin="round" />
-      <rect x="196" y="150" width="120" height="78" rx="6" fill={C.cream} />
-      <ellipse cx="256" cy="150" rx="60" ry="14" fill="#f6efdc" />
-      <rect x="244" y="112" width="24" height="26" fill={C.ink} />
-      <path d="M256 84 c14 12 12 22 0 28 c-12 -6 -14 -16 0 -28z" fill={C.orange} />
-      <path d="M40 228 V188 M28 228 L40 188 L52 228" stroke={C.ink} strokeWidth="5" fill="none" strokeLinecap="round" />
-    </Backdrop>
-  )
-}
-function ScenePlant() {
-  return (
-    <Backdrop>
-      <rect x="110" y="140" width="190" height="88" rx="4" fill={C.cream} />
-      <rect x="128" y="74" width="26" height="70" fill={C.ink} />
-      <rect x="170" y="94" width="26" height="50" fill={C.ink} />
-      <circle cx="258" cy="186" r="26" fill="none" stroke={C.ink} strokeWidth="6" />
-      <path d="M258 162 V210 M234 186 H282" stroke={C.ink} strokeWidth="4" />
-      <rect x="128" y="176" width="24" height="18" rx="3" fill={C.ink} />
-      <rect x="166" y="176" width="24" height="18" rx="3" fill={C.ink} />
-      <circle cx="141" cy="58" r="11" fill="#fff" opacity=".85" />
-      <circle cx="156" cy="44" r="14" fill="#fff" opacity=".7" />
-      <circle cx="183" cy="80" r="9" fill="#fff" opacity=".85" />
-    </Backdrop>
-  )
-}
-function SceneEmission() {
-  return (
-    <Backdrop>
-      <rect x="150" y="96" width="34" height="132" fill={C.ink} />
-      <rect x="150" y="112" width="34" height="8" fill={C.orange} />
-      <g fill="#ffffff" opacity=".9">
-        <circle cx="170" cy="74" r="20" /><circle cx="198" cy="58" r="26" /><circle cx="232" cy="66" r="20" />
-      </g>
-      <text x="198" y="66" textAnchor="middle" fontSize="16" fontWeight="700" fill={C.ink} fontFamily="Noto Sans Thai, sans-serif">CO₂</text>
-      <path d="M184 214 C 230 214 240 230 290 230" stroke="#7fb3c8" strokeWidth="8" fill="none" strokeLinecap="round" />
-      <path d="M300 196 c10 12 10 20 0 24 c-10 -4 -10 -12 0 -24z" fill="#7fb3c8" />
-    </Backdrop>
-  )
-}
-function SceneGrid() {
-  const tower = (x: number) => (
-    <g key={x} stroke={C.ink} strokeWidth="4" fill="none" strokeLinejoin="round">
-      <path d={`M${x - 16} 228 L${x} 110 L${x + 16} 228`} />
-      <path d={`M${x - 24} 130 H${x + 24} M${x - 18} 156 H${x + 18} M${x - 10} 190 L${x + 10} 170 M${x + 10} 190 L${x - 10} 170`} />
-    </g>
-  )
-  return (
-    <Backdrop>
-      <path d="M46 130 Q 120 150 176 130 Q 230 150 280 136" stroke={C.ink} strokeWidth="2" fill="none" />
-      {[70, 176].map(tower)}
-      <path d="M282 228 V178 L318 152 L354 178 V228 Z" fill={C.cream} />
-      <rect x="306" y="196" width="22" height="32" fill={C.ink} />
-      <rect x="290" y="186" width="12" height="12" fill={C.sun} />
-      <rect x="334" y="186" width="12" height="12" fill={C.sun} />
-    </Backdrop>
-  )
-}
-
+type NodeKey = "fuel" | "plant" | "emission" | "grid"
 type Step = {
-  key: string; icon: typeof Flame; short: string; sub: string; eyebrow: string; title: string
-  body: React.ReactNode; link: { to: string; label: string }; caveat: string; scene: React.ReactNode
+  key: NodeKey
+  level: "ระดับระบบ" | "ระดับโรงไฟฟ้า"
+  label: string
+  value: string
+  sub: string
+  title: string
+  body: React.ReactNode
+  link: { to: string; label: string }
+  dataset: string
+  caveat: string
 }
 
 const steps: Step[] = [
   {
-    key: "fuel", icon: Flame, short: "เชื้อเพลิง", sub: "ก๊าซ · ถ่านหิน · นำเข้า",
-    eyebrow: "", title: "ก๊าซธรรมชาติยังเป็นเชื้อเพลิงหลัก",
-    body: <>ในปี {latestYear} ไฟฟ้าระบบ กฟผ. ผลิตจากก๊าซธรรมชาติราว {headline.gasShare?.toFixed(0)}% ที่เหลือมาจากถ่านหิน การนำเข้า พลังงานหมุนเวียน และพลังน้ำ ดูได้ย้อนหลังถึงปี 1986</>,
+    key: "fuel", level: "ระดับระบบ", label: "เชื้อเพลิง",
+    value: `ก๊าซ ${headline.gasShare?.toFixed(0)}%`, sub: `ของไฟฟ้าที่ผลิต ปี ${latestYear}`,
+    title: "ก๊าซธรรมชาติยังเป็นเชื้อเพลิงหลัก",
+    body: <>ในปี {latestYear} ไฟฟ้าระบบ กฟผ. ราว {headline.gasShare?.toFixed(0)}% ผลิตจากก๊าซธรรมชาติ ที่เหลือมาจากถ่านหิน การนำเข้า พลังงานหมุนเวียน และพลังน้ำ ดูย้อนหลังได้ถึงปี 1986</>,
     link: { to: "/data/generation", label: "ดูการผลิตแยกเชื้อเพลิง" },
-    caveat: "สัดส่วนนี้เป็นของระบบ กฟผ. ไม่ใช่ยอดทั้งประเทศ",
-    scene: <SceneFuel />,
+    dataset: "SRC-01 สนพ. ตาราง 5.2-2",
+    caveat: "สัดส่วนของระบบ กฟผ. ไม่ใช่ยอดทั้งประเทศ",
   },
   {
-    key: "plant", icon: Factory, short: "โรงไฟฟ้า", sub: "ไฟฟ้า · ไอน้ำ",
-    eyebrow: "", title: "โรงไฟฟ้าเดียวได้ทั้งไฟฟ้าและไอน้ำ",
-    body: <>โรงไฟฟ้าพลังความร้อนร่วมกรณีศึกษาใช้ก๊าซ {amount("Natural gas")?.amount_original} {amount("Natural gas")?.unit_original} ต่อปี ผลิตไฟฟ้า {amount("Electricity")?.amount_original} {amount("Electricity")?.unit_original} และไอน้ำ {amount("Steam")?.amount_original} ตัน</>,
+    key: "plant", level: "ระดับโรงไฟฟ้า", label: "โรงไฟฟ้า CHP",
+    value: `${ex("Electricity")?.amount_original} MWh`, sub: `+ ไอน้ำ ${ex("Steam")?.amount_original} t ต่อปี`,
+    title: "โรงไฟฟ้าเดียวได้ทั้งไฟฟ้าและไอน้ำ",
+    body: <>โรงไฟฟ้าพลังความร้อนร่วมกรณีศึกษาใช้ก๊าซ {ex("Natural gas")?.amount_original} {ex("Natural gas")?.unit_original} ต่อปี ผลิตไฟฟ้า {ex("Electricity")?.amount_original} MWh และไอน้ำ {ex("Steam")?.amount_original} ตัน โดยปันส่วนผลกระทบด้วยวิธีประสิทธิภาพ</>,
     link: { to: "/data/lci", label: "เปิดบัญชีรายการ LCI" },
-    caveat: "ตัวเลขรายปีจากโรงไฟฟ้ากรณีศึกษาเพียงโรงเดียว (2017)",
-    scene: <ScenePlant />,
+    dataset: "SRC-08 MATEC 2017 · Table 1",
+    caveat: "ตัวเลขของโรงไฟฟ้ากรณีศึกษาเพียงโรงเดียว",
   },
   {
-    key: "emission", icon: Cloud, short: "การปล่อย", sub: "อากาศ · น้ำ · ของเสีย",
-    eyebrow: "", title: "ทุกเมกะวัตต์ชั่วโมงมีสิ่งที่ปล่อยออกมา",
-    body: <>โรงเดียวกันปล่อย CO₂ {amount("CO2")?.amount_original} kg ต่อปี พร้อม SO₂ ฝุ่น และของเสีย ทุกค่าเปิดดูตำแหน่งในตารางต้นฉบับได้</>,
+    key: "emission", level: "ระดับโรงไฟฟ้า", label: "การปล่อย",
+    value: `CO₂ ${ex("CO2")?.amount_original}`, sub: "kg ต่อปี · พร้อม SO₂ ฝุ่น ของเสีย",
+    title: "ทุกเมกะวัตต์ชั่วโมงมีสิ่งที่ปล่อยออกมา",
+    body: <>โรงเดียวกันปล่อย CO₂ {ex("CO2")?.amount_original} kg ต่อปี รวมถึง SO₂ ฝุ่น และของเสีย ทุกค่าคลิกดูตำแหน่งในตารางต้นฉบับได้</>,
     link: { to: "/data/lci", label: "ดูรายการขาออก" },
-    caveat: "ค่าน้ำทิ้งเป็นความเข้มข้น ไม่ใช่ปริมาณรายปี จึงพักตรวจไว้",
-    scene: <SceneEmission />,
+    dataset: "SRC-08 MATEC 2017 · Table 1",
+    caveat: "ค่าน้ำทิ้ง 4 รายการเป็นความเข้มข้น จึงพักตรวจไว้",
   },
   {
-    key: "grid", icon: Cable, short: "ระบบไฟฟ้า", sub: "กำลังผลิต · ความต้องการ",
-    eyebrow: "", title: "กำลังผลิตต้องรองรับวันที่ใช้ไฟสูงสุด",
+    key: "grid", level: "ระดับระบบ", label: "ระบบไฟฟ้า",
+    value: `${nf(headline.capacity)} MW`, sub: `กำลังผลิต · peak ${nf(headline.peak)} MW`,
+    title: "กำลังผลิตต้องรองรับวันที่ใช้ไฟสูงสุด",
     body: <>ปี {latestYear} ระบบมีกำลังผลิตติดตั้ง {nf(headline.capacity)} MW ขณะที่ความต้องการไฟฟ้าสูงสุดอยู่ที่ {nf(headline.peak)} MW</>,
     link: { to: "/data/system", label: "ดูความต้องการไฟฟ้า" },
+    dataset: "SRC-01 สนพ. ตาราง 5.1-1, 5.2-5",
     caveat: "ฐานการผลิต gross / net ต่างกันตามช่วงปี",
-    scene: <SceneGrid />,
   },
 ]
+const byKey = Object.fromEntries(steps.map((s) => [s.key, s])) as Record<NodeKey, Step>
+
+// ---- schematic layout (viewBox 960 × 330) ----
+const W = 230, H = 112
+const pos: Record<NodeKey, { x: number; y: number }> = {
+  fuel: { x: 16, y: 34 },
+  plant: { x: 365, y: 34 },
+  grid: { x: 714, y: 34 },
+  emission: { x: 365, y: 206 },
+}
+const links: { from: NodeKey; to: NodeKey; d: string; label: string; lx: number; ly: number; anchor?: "start" | "middle" }[] = [
+  { from: "fuel", to: "plant", d: `M${16 + W} 90 H365`, label: "ป้อนเชื้อเพลิง", lx: 305, ly: 80 },
+  { from: "plant", to: "grid", d: `M${365 + W} 90 H714`, label: "จ่ายเข้าระบบ", lx: 654, ly: 80 },
+  { from: "plant", to: "emission", d: `M480 ${34 + H} V206`, label: "ปล่อยสู่สิ่งแวดล้อม", lx: 494, ly: 182, anchor: "start" },
+]
+
+function Schematic({ active, onSelect }: { active: NodeKey; onSelect: (k: NodeKey) => void }) {
+  return (
+    <svg viewBox="0 0 960 330" className="h-auto w-full" role="group" aria-label="แผนภาพห่วงโซ่ไฟฟ้า">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="var(--axis)" />
+        </marker>
+        <marker id="arrow-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="var(--primary)" />
+        </marker>
+      </defs>
+
+      {links.map((l) => {
+        const on = l.from === active || l.to === active
+        return (
+          <g key={l.d}>
+            <path
+              d={l.d}
+              fill="none"
+              stroke={on ? "var(--primary)" : "var(--axis)"}
+              strokeWidth={on ? 2.5 : 2}
+              strokeDasharray="6 6"
+              markerEnd={`url(#${on ? "arrow-on" : "arrow"})`}
+              className={on ? "flow-dash" : undefined}
+            />
+            <text x={l.lx} y={l.ly} textAnchor={l.anchor ?? "middle"} fontSize="13" fill="var(--muted-foreground)">{l.label}</text>
+          </g>
+        )
+      })}
+
+      {steps.map((s, i) => {
+        const p = pos[s.key]
+        const on = s.key === active
+        return (
+          <g
+            key={s.key}
+            role="button"
+            tabIndex={0}
+            aria-pressed={on}
+            aria-label={`${s.label} ${s.value}`}
+            onClick={() => onSelect(s.key)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault()
+                onSelect(s.key)
+              }
+            }}
+            className="cursor-pointer outline-none [&:focus-visible>rect]:stroke-[var(--ring)]"
+          >
+            <rect
+              x={p.x} y={p.y} width={W} height={H} rx="14"
+              fill={on ? "var(--primary)" : "var(--card)"}
+              stroke={on ? "var(--primary)" : "var(--border)"}
+              strokeWidth="1.5"
+              style={{ transition: "fill .25s" }}
+            />
+            <text x={p.x + 18} y={p.y + 28} fontSize="13" fill={on ? "rgba(255,255,255,.75)" : "var(--muted-foreground)"}>
+              {String(i + 1).padStart(2, "0")} · {s.label}
+            </text>
+            <text x={p.x + W - 16} y={p.y + 28} fontSize="11" textAnchor="end" fill={on ? "var(--electric)" : "var(--callout-edge)"}>
+              {s.level}
+            </text>
+            <text x={p.x + 18} y={p.y + 64} fontSize="22" fontWeight="700" fill={on ? "#fff" : "var(--foreground)"} style={{ fontVariantNumeric: "tabular-nums" }}>
+              {s.value}
+            </text>
+            <text x={p.x + 18} y={p.y + 90} fontSize="12.5" fill={on ? "rgba(255,255,255,.75)" : "var(--muted-foreground)"}>
+              {s.sub}
+            </text>
+          </g>
+        )
+      })}
+    </svg>
+  )
+}
+
+function Detail({ s }: { s: Step }) {
+  return (
+    <div className="grid gap-4 md:grid-cols-[1fr_auto] md:items-end">
+      <div className="space-y-2">
+        <h3 className="text-xl font-semibold tracking-tight sm:text-2xl">{s.title}</h3>
+        <p className="text-foreground/85 leading-relaxed">{s.body}</p>
+        <p className="text-muted-foreground text-xs">
+          ข้อมูลจาก {s.dataset} · <span style={{ color: "var(--callout-edge)" }}>{s.caveat}</span>
+        </p>
+      </div>
+      <a
+        href={href(s.link.to)}
+        className="bg-primary text-primary-foreground inline-flex w-fit items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium hover:opacity-90"
+      >
+        {s.link.label} <ArrowUpRight className="size-4" />
+      </a>
+    </div>
+  )
+}
 
 export function Story() {
-  const [active, setActive] = React.useState(0)
-  const s = steps[active]
+  const [active, setActive] = React.useState<NodeKey>("fuel")
   return (
-    <section id="story" className="space-y-8">
+    <section id="story" className="space-y-6">
       <div className="max-w-3xl space-y-3">
-        <div className="text-xs font-semibold tracking-wide uppercase" style={{ color: "var(--callout-edge)" }}>ไฟฟ้า 1 หน่วยมาจากไหน</div>
-        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">ตามไฟฟ้าย้อนกลับไปถึงต้นทาง</h2>
+        <div className="text-xs font-semibold tracking-wide uppercase" style={{ color: "var(--callout-edge)" }}>ห่วงโซ่ไฟฟ้า</div>
+        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">ตัวเลขแต่ละช่วง มาจากชุดข้อมูลไหน</h2>
         <p className="text-muted-foreground">
-          กดแต่ละขั้นเพื่อดูว่าข้อมูลชุดไหนเล่าเรื่องช่วงนั้น · ภาพเป็นแนวคิด ส่วนตัวเลขดึงจากฐานข้อมูลจริง
+          แผนภาพเชื่อมชุดข้อมูลระดับระบบกับระดับโรงไฟฟ้าเข้าด้วยกัน ตัวเลขทุกตัวดึงจากฐานข้อมูลจริง
         </p>
       </div>
 
-      <ol className="relative grid grid-cols-4 gap-2">
-        <span aria-hidden className="bg-border absolute top-5 right-[12.5%] left-[12.5%] h-0.5" />
-        <span
-          aria-hidden
-          className="bg-primary absolute top-5 left-[12.5%] h-0.5 transition-all duration-500"
-          style={{ width: `${(active / (steps.length - 1)) * 75}%` }}
-        />
-        {steps.map((st, i) => (
-          <li key={st.key} className="relative flex flex-col items-center text-center">
-            <button
-              onClick={() => setActive(i)}
-              aria-label={`ขั้นที่ ${i + 1} ${st.short}`}
-              aria-current={active === i ? "step" : undefined}
-              className={cn(
-                "flex size-10 items-center justify-center rounded-full border-2 transition-colors",
-                i <= active ? "bg-primary border-primary text-primary-foreground" : "bg-card text-muted-foreground hover:border-primary/50",
-              )}
-            >
-              <st.icon className="size-4" />
-            </button>
-            <button onClick={() => setActive(i)} className="mt-2 text-sm font-medium">{st.short}</button>
-            <span className="text-muted-foreground hidden text-xs sm:block">{st.sub}</span>
+      {/* desktop: interactive schematic */}
+      <div className="bg-card hidden overflow-hidden rounded-2xl border md:block">
+        <div
+          className="border-b px-6 pt-6 pb-4"
+          style={{
+            backgroundColor: "var(--paper)",
+            backgroundImage: "radial-gradient(var(--border) 1px, transparent 1px)",
+            backgroundSize: "18px 18px",
+          }}
+        >
+          <Schematic active={active} onSelect={setActive} />
+          <p className="text-muted-foreground mt-2 flex items-center gap-1.5 text-xs">
+            <MousePointerClick className="size-3.5" /> คลิกกล่องในแผนภาพเพื่อดูรายละเอียด
+          </p>
+        </div>
+        <div className="p-6">
+          <Detail s={byKey[active]} />
+        </div>
+      </div>
+
+      {/* mobile: stacked flow */}
+      <ol className="space-y-2 md:hidden">
+        {steps.map((s, i) => (
+          <li key={s.key}>
+            {i > 0 && <ArrowDown aria-hidden className="text-muted-foreground mx-auto mb-2 size-4" />}
+            <div className="bg-card rounded-2xl border p-4">
+              <div className="flex items-baseline justify-between text-xs">
+                <span className="text-muted-foreground">{String(i + 1).padStart(2, "0")} · {s.label}</span>
+                <span style={{ color: "var(--callout-edge)" }}>{s.level}</span>
+              </div>
+              <div className="mt-1 text-xl font-bold tabular-nums">{s.value}</div>
+              <div className="text-muted-foreground text-xs">{s.sub}</div>
+              <div className="mt-3 border-t pt-3">
+                <Detail s={s} />
+              </div>
+            </div>
           </li>
         ))}
       </ol>
-
-      <div className="bg-card grid overflow-hidden rounded-2xl border lg:grid-cols-2">
-        <div className="flex flex-col justify-center gap-4 p-6 sm:p-10">
-          <div className="text-muted-foreground text-sm tabular-nums">ขั้นที่ {active + 1} จาก {steps.length}</div>
-          <h3 className="text-2xl font-semibold tracking-tight sm:text-3xl">{s.title}</h3>
-          <p className="text-foreground/85 text-lg leading-relaxed">{s.body}</p>
-          <p className="flex items-start gap-1.5 text-xs" style={{ color: "var(--callout-edge)" }}>
-            <span aria-hidden>※</span>{s.caveat}
-          </p>
-          <div className="mt-2 flex flex-wrap items-center gap-3">
-            <a href={href(s.link.to)} className="bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium hover:opacity-90">
-              {s.link.label} <ArrowUpRight className="size-4" />
-            </a>
-            <div className="ml-auto flex gap-2">
-              <Button variant="outline" size="icon" className="rounded-full" disabled={active === 0} onClick={() => setActive((a) => a - 1)} aria-label="ขั้นก่อนหน้า">
-                <ChevronLeft />
-              </Button>
-              <Button variant="outline" size="icon" className="rounded-full" disabled={active === steps.length - 1} onClick={() => setActive((a) => a + 1)} aria-label="ขั้นถัดไป">
-                <ChevronRight />
-              </Button>
-            </div>
-          </div>
-        </div>
-        <div className="order-first aspect-[400/260] lg:order-last lg:aspect-auto">{s.scene}</div>
-      </div>
     </section>
   )
 }

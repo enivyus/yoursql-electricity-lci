@@ -160,7 +160,6 @@ export function Home() {
           </div>
 
           <div className="bg-primary text-primary-foreground relative overflow-hidden rounded-2xl p-6 shadow-lg">
-            <Zap aria-hidden className="absolute -top-6 -right-6 size-40 opacity-10" />
             <div className="text-primary-foreground/70 text-sm">ระบบไฟฟ้า กฟผ. · ปี {latestYear}</div>
             <div className="mt-5 grid grid-cols-2 gap-x-6 gap-y-6">
               {[
