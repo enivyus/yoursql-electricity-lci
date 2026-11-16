@@ -36,8 +36,9 @@ export function SiteHeader({ route }: { route: string }) {
         ข้ามไปเนื้อหาหลัก
       </a>
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-4">
-        <a href={href("/")} className="text-primary text-xl font-bold tracking-tight">
-          YourSQL
+        <a href={href("/")} className="min-w-0 leading-tight" aria-label="Thailand Electricity & Power Generation Data by Team YourSQL หน้าแรก">
+          <span className="text-primary block text-[15px] font-bold tracking-tight sm:text-lg">Thailand Electricity &amp; Power Generation Data</span>
+          <span className="text-muted-foreground block text-xs">by Team YourSQL</span>
         </a>
         <nav className="ml-auto hidden items-center gap-1 md:flex">
           <NavLink to="/" active={route === "/"}>หน้าแรก</NavLink>
@@ -83,7 +84,8 @@ export function SiteHeader({ route }: { route: string }) {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent side="left">
           <SheetHeader>
-            <SheetTitle className="text-primary">YourSQL</SheetTitle>
+            <SheetTitle className="text-primary">Thailand Electricity &amp; Power Generation Data</SheetTitle>
+            <div className="text-muted-foreground text-xs">by Team YourSQL</div>
             <SheetDescription className="sr-only">เมนู</SheetDescription>
           </SheetHeader>
           <nav className="grid gap-1 px-4" onClick={() => setOpen(false)}>
