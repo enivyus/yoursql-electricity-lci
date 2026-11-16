@@ -62,8 +62,8 @@ export function Lci({ onTrace }: { onTrace: (t: TraceTarget) => void }) {
     ["พื้นที่", process.location_name],
   ]
   return (
-    <div className="grid gap-4">
-      <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-4">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-4 lg:grid-cols-[1.4fr_1fr]">
         <Card>
           <CardHeader>
             <div className="flex flex-wrap gap-2">
