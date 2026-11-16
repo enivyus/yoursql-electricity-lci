@@ -31,7 +31,7 @@ scripts/qa_review.py      ตรวจคุณภาพทุกแถว แ�
 tests/test_integrity.py   Automated tests 16 ชุด (BR-05, FR-08, FR-09, QA, Q01–Q27)
 snapshots/                ไฟล์ต้นฉบับที่ดาวน์โหลด + SHA256SUMS.txt
 results/                  ผลการรันจริง และ pdf_recheck.csv (เทียบค่า SRC-08 ทั้ง 31 รายการกับ PDF)
-serving/                  หัวข้อ 6.x: Cypher (LOAD CSV … MERGE), embedding, ทริปเปิลสำหรับ W14 Colab และผล (colab_results/)
+serving/                  หัวข้อ 6.x: Cypher (LOAD CSV … MERGE) + ผลรัน Neo4j (neo4j_results/), embedding, ทริปเปิลสำหรับ W14 Colab และผล (colab_results/)
 docs/                     ERD และ SRS ฉบับสมบูรณ์
 ```
 
@@ -75,6 +75,21 @@ WHERE f.name = 'CO2';
 ```
 
 เปิด `snapshots/RECHECK-SRC08-20261113_matecconf_iscee2017_05009.pdf` หน้า 5 Table 1 แถว CO2 จะเห็นค่า 324,686,938 kgCO2
+
+## RDB → Property Graph (Neo4j)
+
+รัน `serving/01_load_neo4j.cypher` บน Neo4j Desktop 2.3.1 (Cypher 25) เมื่อ 16 พ.ย. 2569 สคริปต์อ่าน CSV จาก GitHub โดยตรงและอัปเดตสถานะตาม `status_history.csv`
+
+| ตรวจ | ผล |
+|---|---|
+| โหนด | 41 (Source 10 · Flow 29 · Process 1 · Location 1) ตรงกับจำนวนแถว CSV |
+| ความสัมพันธ์ | 33 (EXCHANGES 31 · FROM_SOURCE 1 · LOCATED_IN 1) |
+| สถานะ | reviewed 26 · held_context 5 ตรงกับ `db/lci.db` |
+| Q1 CO2 | 324,686,938 kgCO2 (reviewed) |
+| Q2 ที่มา | SRC-08 · Table 1 (p.5) แถว 21 · SHA-256 d6dda381… |
+| Q3 สิ่งที่ปล่อยออก | 13 รายการ (exchange 19–31) เท่ากับ SQL |
+
+ภาพผลและกราฟอยู่ใน `serving/neo4j_results/`
 
 ## หมายเหตุเรื่อง snapshot ของ SRC-08 (รุ่น RECHECK-20261116)
 
