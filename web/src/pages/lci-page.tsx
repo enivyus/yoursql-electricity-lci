@@ -13,7 +13,7 @@ export function LciPage({ onTrace }: { onTrace: (t: TraceTarget) => void }) {
       <div className="space-y-4">
         <Breadcrumb items={[{ label: "ข้อมูลไฟฟ้า", to: "/" }, { label: d.title }]} />
         <div className="space-y-2">
-          <div className="text-muted-foreground text-sm">{d.tag} · {d.tables}</div>
+          <div className="flex flex-wrap gap-2"><span className="bg-secondary text-primary rounded-full px-3 py-0.5 text-xs font-medium">{d.tag}</span><span className="text-muted-foreground rounded-full border px-3 py-0.5 text-xs">{d.tables}</span></div>
           <h1 className="text-3xl font-bold tracking-tight">{d.title}</h1>
           <p className="text-muted-foreground max-w-3xl">
             {d.desc} · {src.license_note}{" "}
@@ -26,12 +26,12 @@ export function LciPage({ onTrace }: { onTrace: (t: TraceTarget) => void }) {
       <StatTiles
         tiles={[
           { label: "รายการจากต้นฉบับ", value: nf0(s.rows), sub: "Table 1 ทุกแถว" },
-          { label: "ตรวจแล้ว ย้อนต้นทางได้", value: nf0(s.reviewed), sub: "เทียบกับ PDF ครบทุกค่า", tone: "accept" },
+          { label: "ผ่านการตรวจ", value: nf0(s.reviewed), sub: "เทียบกับ PDF ครบทุกค่า", tone: "accept" },
           { label: "พักตรวจ", value: nf0(s.held), sub: "ค่าที่ยังใช้คำนวณไม่ได้" },
           { label: "สิทธิการใช้", value: src.license_note ?? "—", sub: "บทความ Open Access" },
         ]}
       />
-      <Callout title="อ่านก่อนใช้">{d.notes.join(" ")}</Callout>
+      <Callout title="ก่อนนำไปใช้"><ul className="list-disc space-y-0.5 pl-4">{d.notes.map((n) => <li key={n}>{n}</li>)}</ul></Callout>
       <Lci onTrace={onTrace} />
     </div>
   )

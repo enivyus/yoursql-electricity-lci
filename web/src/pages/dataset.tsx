@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ChevronLeft, ChevronRight, Download, ExternalLink, Search } from "lucide-react"
+import { CalendarRange, ChevronLeft, ChevronRight, CircleDashed, Download, ExternalLink, Rows3, ScanSearch, Search, ShieldCheck } from "lucide-react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
@@ -107,7 +107,7 @@ export function DatasetPage({ d, onTrace }: { d: Dataset; onTrace: (t: TraceTarg
       <div className="space-y-4">
         <Breadcrumb items={[{ label: "ข้อมูลไฟฟ้า", to: "/" }, { label: d.title }]} />
         <div className="space-y-2">
-          <div className="text-muted-foreground text-sm">{d.tag} · {d.tables}</div>
+          <div className="flex flex-wrap gap-2"><span className="bg-secondary text-primary rounded-full px-3 py-0.5 text-xs font-medium">{d.tag}</span><span className="text-muted-foreground rounded-full border px-3 py-0.5 text-xs">{d.tables}</span></div>
           <h1 className="text-3xl font-bold tracking-tight">{d.title}</h1>
           <p className="text-muted-foreground max-w-3xl">
             {d.desc} · {src.publisher} ({src.source_id}){" "}
@@ -120,25 +120,28 @@ export function DatasetPage({ d, onTrace }: { d: Dataset; onTrace: (t: TraceTarg
 
       <StatTiles
         tiles={[
-          { label: "ข้อมูลจากต้นฉบับ", value: nf0(s.rows), sub: `ค่าจาก ${d.tables}` },
-          { label: "ตรวจแล้ว ย้อนต้นทางได้", value: nf0(s.reviewed), sub: "มีเซลล์ต้นฉบับ และ SHA-256", tone: "accept" },
-          { label: "ค่าว่างในต้นฉบับ", value: nf0(s.blank), sub: "เก็บไว้เป็น blank ไม่นับ" },
-          { label: "ช่วงข้อมูล", value: s.coverage.split(" · ")[0].replace("รายปี ", ""), sub: s.coverage },
+          { label: "แถวในชุดนี้", value: nf0(s.rows), sub: `ถอดจาก ${d.tables}`, icon: Rows3 },
+          { label: "ผ่านการตรวจ", value: nf0(s.reviewed), sub: "มีเซลล์ต้นฉบับและ SHA-256", tone: "accept", icon: ShieldCheck },
+          { label: "ค่าว่าง", value: nf0(s.blank), sub: "ต้นฉบับเว้นว่าง ไม่นับเป็นข้อมูล", icon: CircleDashed },
+          { label: "ช่วงเวลา", value: s.coverage.split(" · ")[0].replace("รายปี ", ""), sub: s.coverage, icon: CalendarRange },
         ]}
       />
 
-      <Callout title="ทีมรับเป็นสถิติต้นทางแล้ว">
-        ค่าที่ตรวจแล้วตรงกับไฟล์ของ {src.publisher} และย้อนถึงเซลล์ต้นฉบับได้ (ผลตรวจ M4 QA) · {d.notes.join(" ")}
+      <Callout title="ก่อนนำไปใช้">
+        <ul className="list-disc space-y-0.5 pl-4">
+          {d.notes.map((n) => <li key={n}>{n}</li>)}
+          <li>ค่าที่ “ตรวจแล้ว” เทียบกับไฟล์ของ {src.publisher} ครบทุกค่าในรอบ M4 QA</li>
+        </ul>
       </Callout>
 
       <section className="space-y-4">
-        <SectionHeading eyebrow="ภาพรวม" title="ดูแนวโน้ม" />
+        <SectionHeading eyebrow="Charts" title="แนวโน้ม" />
         <Charts id={d.id} />
       </section>
 
       <section className="space-y-4">
-        <SectionHeading eyebrow="ค้นข้อมูล" title="ค้นข้อมูลที่ต้องการ" desc="คลิกแถวเพื่อดูเซลล์ต้นฉบับ ไฟล์ snapshot, SHA-256 และประวัติสถานะ" />
-        <div className="grid gap-3 rounded-lg border p-4 sm:grid-cols-2 lg:grid-cols-6" style={{ background: "var(--paper)" }}>
+        <SectionHeading eyebrow="Table" title="ตารางข้อมูล" desc="กรองได้หลายเงื่อนไข · คลิกแถวเพื่อเปิดหลักฐานต้นทางของค่านั้น" />
+        <div className="bg-card grid gap-3 rounded-2xl border p-4 shadow-sm sm:grid-cols-2 lg:grid-cols-6">
           <Field label="ค้นหา">
             <div className="relative">
               <Search className="text-muted-foreground absolute top-2.5 left-2.5 size-4" />
@@ -200,42 +203,44 @@ export function DatasetPage({ d, onTrace }: { d: Dataset; onTrace: (t: TraceTarg
         </div>
 
         <div className="flex items-center justify-between">
-          <p className="text-muted-foreground text-xs">พบ {nf0(rows.length)} รายการ</p>
+          <p className="text-muted-foreground text-sm"><span className="text-foreground font-semibold tabular-nums">{nf0(rows.length)}</span> แถวตามตัวกรอง</p>
           <Button variant="outline" size="sm" onClick={download}>
-            <Download />ส่งออก CSV ตามตัวกรอง
+            <Download />ดาวน์โหลด CSV
           </Button>
         </div>
 
-        <div className="overflow-hidden rounded-lg border">
+        <div className="overflow-hidden rounded-2xl border">
           <Table>
-            <TableHeader style={{ background: "var(--paper)" }}>
+            <TableHeader className="bg-muted/60">
               <TableRow className="hover:bg-transparent">
-                <TableHead className="px-4">หมวด / ตัวชี้วัด</TableHead>
+                <TableHead className="px-4">หมวด</TableHead>
+                <TableHead>ตัวชี้วัด</TableHead>
                 <TableHead>ช่วงเวลา</TableHead>
-                <TableHead className="text-right">ค่าต้นฉบับ</TableHead>
-                <TableHead className="px-4">สถานะ</TableHead>
+                <TableHead className="text-right">ค่า</TableHead>
+                <TableHead>หน่วย</TableHead>
+                <TableHead>เซลล์ต้นฉบับ</TableHead>
+                <TableHead>สถานะ</TableHead>
+                <TableHead className="w-10"><span className="sr-only">หลักฐาน</span></TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               {view.map((o) => (
-                <TableRow key={o.obs_id} className="cursor-pointer" onClick={() => onTrace(observationTarget(o))}>
-                  <TableCell className="px-4 py-3">
-                    <div className="font-medium">{o.category}</div>
-                    <div className="text-muted-foreground text-xs">{measureLabel[o.measure]} · obs {o.obs_id}</div>
-                  </TableCell>
+                <TableRow key={o.obs_id} className="group cursor-pointer" onClick={() => onTrace(observationTarget(o))}>
+                  <TableCell className="px-4 font-medium">{o.category}</TableCell>
+                  <TableCell className="text-muted-foreground text-xs">{measureLabel[o.measure]}</TableCell>
                   <TableCell className="tabular-nums">{period(o)}</TableCell>
-                  <TableCell className="py-3 text-right">
-                    <div className="font-medium tabular-nums">
-                      {o.value === null ? <span className="text-muted-foreground">ว่าง</span> : o.value.toLocaleString("en-US", { maximumFractionDigits: 2 })}
-                    </div>
-                    <div className="text-muted-foreground text-xs">{o.unit_original} · {o.location_in_source}</div>
+                  <TableCell className="text-right font-mono tabular-nums">
+                    {o.value === null ? <span className="text-muted-foreground font-sans">ว่าง</span> : o.value.toLocaleString("en-US", { maximumFractionDigits: 2 })}
                   </TableCell>
-                  <TableCell className="px-4"><StatusBadge status={o.review_status} /></TableCell>
+                  <TableCell className="text-muted-foreground text-xs">{o.unit_original}</TableCell>
+                  <TableCell><code className="bg-muted rounded px-1.5 py-0.5 font-mono text-[11px]">{o.location_in_source}</code></TableCell>
+                  <TableCell><StatusBadge status={o.review_status} /></TableCell>
+                  <TableCell><ScanSearch className="text-muted-foreground group-hover:text-primary size-4" /></TableCell>
                 </TableRow>
               ))}
               {view.length === 0 && (
                 <TableRow>
-                  <TableCell colSpan={4} className="text-muted-foreground h-24 text-center">ไม่พบข้อมูลตามตัวกรอง</TableCell>
+                  <TableCell colSpan={8} className="text-muted-foreground h-24 text-center">ไม่พบข้อมูลตามตัวกรอง</TableCell>
                 </TableRow>
               )}
             </TableBody>

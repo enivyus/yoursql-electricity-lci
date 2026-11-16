@@ -8,7 +8,7 @@ import { href } from "@/lib/router"
 import { datasets } from "@/lib/data"
 
 const links = [
-  { to: "/", label: "สำรวจข้อมูล" },
+  { to: "/", label: "หน้าแรก" },
   { to: "/pipeline", label: "เส้นทางข้อมูล" },
   { to: "/sources", label: "แหล่งข้อมูล" },
 ]
@@ -18,9 +18,8 @@ function NavLink({ to, active, children }: { to: string; active: boolean; childr
     <a
       href={href(to)}
       className={cn(
-        "relative flex h-14 items-center text-sm transition-colors",
-        active ? "text-primary font-semibold" : "text-foreground/80 hover:text-foreground",
-        active && "after:bg-primary after:absolute after:inset-x-0 after:bottom-0 after:h-[3px]",
+        "rounded-full px-3.5 py-1.5 text-sm transition-colors",
+        active ? "bg-primary text-primary-foreground font-medium" : "text-foreground/75 hover:bg-secondary hover:text-foreground",
       )}
     >
       {children}
@@ -36,18 +35,23 @@ export function SiteHeader({ route }: { route: string }) {
       <a href="#main" className="focus:bg-primary focus:text-primary-foreground sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:px-3 focus:py-1">
         ข้ามไปเนื้อหาหลัก
       </a>
-      <div className="mx-auto flex h-14 max-w-6xl items-center gap-8 px-4">
-        <a href={href("/")} className="text-primary flex items-center gap-2 text-xl font-bold tracking-tight">
-          <Zap className="size-5" />
-          YourSQL
+      <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-4">
+        <a href={href("/")} className="flex items-center gap-2.5">
+          <span className="bg-primary flex size-8 items-center justify-center rounded-lg">
+            <Zap className="size-4" style={{ color: "var(--electric)", fill: "var(--electric)" }} />
+          </span>
+          <span className="leading-tight">
+            <span className="text-primary block text-base font-bold tracking-tight">YourSQL</span>
+            <span className="text-muted-foreground block text-[11px]">Thailand Electricity Data</span>
+          </span>
         </a>
-        <nav className="hidden items-center gap-6 md:flex">
-          <NavLink to="/" active={route === "/"}>สำรวจข้อมูล</NavLink>
+        <nav className="ml-auto hidden items-center gap-1 md:flex">
+          <NavLink to="/" active={route === "/"}>หน้าแรก</NavLink>
           <DropdownMenu>
             <DropdownMenuTrigger
               className={cn(
-                "relative flex h-14 items-center gap-1 text-sm outline-none",
-                onData ? "text-primary font-semibold after:bg-primary after:absolute after:inset-x-0 after:bottom-0 after:h-[3px]" : "text-foreground/80 hover:text-foreground",
+                "flex items-center gap-1 rounded-full px-3.5 py-1.5 text-sm outline-none transition-colors",
+                onData ? "bg-primary text-primary-foreground font-medium" : "text-foreground/75 hover:bg-secondary hover:text-foreground",
               )}
             >
               ชุดข้อมูล <ChevronDown className="size-4" />
@@ -86,7 +90,7 @@ export function SiteHeader({ route }: { route: string }) {
         <SheetContent side="left">
           <SheetHeader>
             <SheetTitle className="text-primary">YourSQL</SheetTitle>
-            <SheetDescription>ข้อมูลไฟฟ้าไทยที่ตามรอยได้</SheetDescription>
+            <SheetDescription>Thailand Electricity Data</SheetDescription>
           </SheetHeader>
           <nav className="grid gap-1 px-4" onClick={() => setOpen(false)}>
             {links.map((l) => (
