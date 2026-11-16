@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+/* shadcn/ui · new-york · neutral */
+:root {
+  --radius: 0.5rem;
+  --background: #ffffff;
+  --foreground: #202b25;
+  --card: #ffffff;
+  --card-foreground: #202b25;
+  --popover: #ffffff;
+  --popover-foreground: #202b25;
+  --primary: #1f4d3a;
+  --primary-foreground: #ffffff;
+  --secondary: #eef2ec;
+  --secondary-foreground: #1f4d3a;
+  --muted: #f3f5f0;
+  --muted-foreground: #56645c;
+  --accent: #eef2ec;
+  --accent-foreground: #1f4d3a;
+  --destructive: #b3412f;
+  --border: #dde3dc;
+  --input: #cfd7cf;
+  --ring: #2f6f4f;
+
+  /* paper bands + callouts */
+  --paper: #f3f5f0;
+  --paper-strong: #e8eee6;
+  --callout: #fbf1e4;
+  --callout-edge: #b8692f;
+
+  /* chart chrome + validated categorical palette (light) */
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #6250d6;
+  --series-8: #e34948;
+
+  /* status (fixed) */
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-critical: #d03b3b;
+}
+
+@theme inline {
+  --font-sans: "Noto Sans Thai", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "tnum" 0;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
