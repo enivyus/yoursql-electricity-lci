@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ChevronDown, Menu, Zap } from "lucide-react"
+import { ChevronDown, Menu } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
@@ -36,14 +36,8 @@ export function SiteHeader({ route }: { route: string }) {
         ข้ามไปเนื้อหาหลัก
       </a>
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-4">
-        <a href={href("/")} className="flex items-center gap-2.5">
-          <span className="bg-primary flex size-8 items-center justify-center rounded-lg">
-            <Zap className="size-4" style={{ color: "var(--electric)", fill: "var(--electric)" }} />
-          </span>
-          <span className="leading-tight">
-            <span className="text-primary block text-base font-bold tracking-tight">YourSQL</span>
-            <span className="text-muted-foreground block text-[11px]">Thailand Electricity Data</span>
-          </span>
+        <a href={href("/")} className="text-primary text-xl font-bold tracking-tight">
+          YourSQL
         </a>
         <nav className="ml-auto hidden items-center gap-1 md:flex">
           <NavLink to="/" active={route === "/"}>หน้าแรก</NavLink>
@@ -90,7 +84,7 @@ export function SiteHeader({ route }: { route: string }) {
         <SheetContent side="left">
           <SheetHeader>
             <SheetTitle className="text-primary">YourSQL</SheetTitle>
-            <SheetDescription>Thailand Electricity Data</SheetDescription>
+            <SheetDescription className="sr-only">เมนู</SheetDescription>
           </SheetHeader>
           <nav className="grid gap-1 px-4" onClick={() => setOpen(false)}>
             {links.map((l) => (

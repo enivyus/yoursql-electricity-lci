@@ -50,7 +50,7 @@
 }
 
 @theme inline {
-  --font-sans: "IBM Plex Sans Thai", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "Sarabun", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -89,5 +89,20 @@
   }
   .tabular {
     font-variant-numeric: tabular-nums;
+  }
+}
+
+/* animated connector in the story schematic */
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.flow-dash {
+  animation: flow-dash 1.2s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-dash {
+    animation: none;
   }
 }
