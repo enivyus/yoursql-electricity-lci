@@ -15,21 +15,28 @@ export function Pipeline() {
     <div className="mx-auto max-w-6xl space-y-12 px-4 py-8">
       <div className="space-y-4">
         <Breadcrumb items={[{ label: "ข้อมูลไฟฟ้า", to: "/" }, { label: "เส้นทางข้อมูล" }]} />
-        <h1 className="text-3xl font-bold tracking-tight">ข้อมูลเดินทางมาอย่างไร</h1>
+        <h1 className="text-3xl font-bold tracking-tight">จากไฟล์ต้นทาง ถึงตัวเลขบนเว็บ</h1>
         <p className="text-muted-foreground max-w-3xl">จากไฟล์ของผู้เผยแพร่ ถึงตัวเลขบนหน้าเว็บ ทุกขั้นรันซ้ำได้จากสคริปต์ใน repository</p>
       </div>
-      <ol className="grid gap-px overflow-hidden rounded-lg border bg-[var(--border)] md:grid-cols-5">
+      <ol className="relative space-y-4 pl-12">
+        <span aria-hidden className="bg-border absolute top-2 bottom-2 left-[19px] w-0.5" />
         {steps.map((s) => (
-          <li key={s.n} className="bg-card flex flex-col gap-2 p-5">
-            <span className="text-primary text-sm font-semibold tabular-nums">{s.n}</span>
-            <span className="font-semibold">{s.title}</span>
-            <span className="text-muted-foreground text-sm leading-relaxed">{s.note}</span>
-            <code className="text-muted-foreground mt-auto pt-2 font-mono text-[11px]">{s.file}</code>
+          <li key={s.n} className="relative">
+            <span className="bg-primary text-primary-foreground absolute top-4 -left-12 flex size-10 items-center justify-center rounded-full text-sm font-semibold tabular-nums ring-4 ring-[var(--background)]">
+              {s.n}
+            </span>
+            <div className="bg-card grid gap-2 rounded-2xl border p-5 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div>
+                <div className="font-semibold">{s.title}</div>
+                <div className="text-muted-foreground mt-1 text-sm leading-relaxed">{s.note}</div>
+              </div>
+              <code className="bg-muted text-muted-foreground w-fit rounded-md px-2 py-1 font-mono text-[11px]">{s.file}</code>
+            </div>
           </li>
         ))}
       </ol>
       <section className="space-y-4">
-        <SectionHeading eyebrow="ผลการตรวจ" title="คุณภาพข้อมูล" />
+        <SectionHeading eyebrow="Quality" title="ผลการตรวจคุณภาพ" />
         <QualityPanel />
       </section>
       <section className="space-y-4">
