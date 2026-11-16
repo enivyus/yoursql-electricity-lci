@@ -45,7 +45,7 @@ OUT | water | elementary | held_context | 4
 
 -- Q08 · FR-02 · รายละเอียดของรายการ CO2 พร้อม Provenance และสถานะ
 exchange_id | flow | amount_original | unit_original | reporting_level | source_id | source_ref | location_in_source | snapshot_file | review_status | license_status
-21 | CO2 | 324,686,938 | kgCO2 | plant | SRC-08 | MATEC-103-05009-T1;MATEC-103-05009-T2 | Table 1 (p.5) แถว 21 | SNAP-SRC08-20261109_matecconf_iscee2017_05009.pdf | reviewed | confirmed
+21 | CO2 | 324,686,938 | kgCO2 | plant | SRC-08 | MATEC-103-05009-T1;MATEC-103-05009-T2 | Table 1 (p.5) แถว 21 | RECHECK-SRC08-20261113_matecconf_iscee2017_05009.pdf | reviewed | confirmed
 
 -- Q09 · FR-06 · ชุดข้อมูลสำหรับส่งออก (ค่าเริ่มต้นไม่รวมรายการพักตรวจ) พร้อม source_id และสิทธิ
 export_rows | missing_license
@@ -65,35 +65,11 @@ SRC-08 | confirmed | reviewed | 26
 
 
 history_id | exchange_id | old_status | new_status | changed_by | reason
-1 | 1 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-2 | 2 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-3 | 3 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-4 | 4 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-5 | 5 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-6 | 6 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-7 | 7 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-8 | 8 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-9 | 9 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-10 | 10 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-11 | 11 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-12 | 12 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-13 | 13 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-14 | 14 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-15 | 15 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-16 | 16 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-17 | 17 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-18 | 18 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
 19 | 19 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-20 | 21 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-21 | 22 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-22 | 27 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-23 | 28 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-24 | 29 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-25 | 30 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
-26 | 31 | unreviewed | reviewed | QA Lead · qa_review.py | M4 QA: ค่าตรงต้นฉบับและตามรอยได้
+871 | 19 | reviewed | unreviewed | QA Lead | ทดสอบ FR-09
 
 exchange_id | amount_original | review_status
-19 | 21,030 | reviewed
+19 | 21,030 | unreviewed
 
 
 -- Q13 · DR-04 / 2.5 · ช่องบริบทที่แหล่งไม่ระบุถูกบันทึกเป็น "ไม่ระบุ" ไม่ใช่ค่าว่าง

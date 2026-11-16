@@ -57,8 +57,8 @@ FROM lci_exchange e JOIN source s ON s.source_id=e.source_id GROUP BY 1,2,3;
 -- Q12 · FR-09 + BR-05 · เปลี่ยนสถานะ 1 รายการ แล้วมีประวัติ ค่าข้อมูลไม่เปลี่ยน (ทดสอบใน transaction แล้ว ROLLBACK)
 BEGIN;
 INSERT OR REPLACE INTO session_ctx VALUES ('user','QA Lead'),('reason','ทดสอบ FR-09');
-UPDATE lci_exchange SET review_status='reviewed' WHERE exchange_id=19;
-SELECT history_id, exchange_id, old_status, new_status, changed_by, reason FROM status_history;
+UPDATE lci_exchange SET review_status=CASE WHEN review_status='reviewed' THEN 'unreviewed' ELSE 'reviewed' END WHERE exchange_id=19;
+SELECT history_id, exchange_id, old_status, new_status, changed_by, reason FROM status_history WHERE exchange_id=19 ORDER BY history_id;
 SELECT exchange_id, amount_original, review_status FROM lci_exchange WHERE exchange_id=19;
 ROLLBACK;
 

@@ -11,6 +11,7 @@ import calendar, csv, sqlite3, sys
 
 DB = sys.argv[1] if len(sys.argv) > 1 else "lci.db"
 c = sqlite3.connect(DB)
+c.execute('PRAGMA foreign_keys=ON')
 report = []
 
 # ---- 1) SRC-08 ค่าที่อ่านจาก PDF (Table 1 p.5 และหัวข้อ 3.2 p.7) วันที่ 2026-11-13
@@ -38,8 +39,8 @@ def sum_check(ds, measure):
         MAX(CASE WHEN category_kind='system_total' THEN value END)
         FROM stat_observation WHERE dataset_ref=? AND measure=? GROUP BY 1,2""", (ds, measure)).fetchall()
     for y, m, s, t in rows:
-        ok = s is not None and t is not None and (abs(s - t) <= 1 or abs(s - t) / t <= 0.001)
-        report.append(["stat_observation", f"{ds} {y}-{m:02d}", "sum = Total", "pass" if ok else "FAIL", f"sum={s:.2f} total={t}"])
+        ok = s is not None and t is not None and (abs(s - t) <= 1 or (t != 0 and abs(s - t) / abs(t) <= 0.001))
+        report.append(["stat_observation", f"{ds} {y}-{m:02d}", "sum = Total", "pass" if ok else "FAIL", f"sum={s} total={t}"])
         if not ok:
             for (oid,) in c.execute("SELECT obs_id FROM stat_observation WHERE dataset_ref=? AND measure=? AND year_ce=? AND COALESCE(month,0)=?", (ds, measure, y, m)):
                 stat_fail.add(oid)
@@ -70,7 +71,7 @@ untraced = c.execute("SELECT COUNT(*) FROM stat_observation WHERE location_in_so
 report.append(["stat_observation", "ทั้งตาราง", "unique key", "pass" if dup == 0 else "FAIL", f"ซ้ำ {dup} กลุ่ม"])
 report.append(["stat_observation", "ทั้งตาราง", "traceable", "pass" if untraced == 0 else "FAIL", f"ขาดหลักฐาน {untraced} แถว"])
 
-# ---- เปลี่ยนสถานะ (trigger บันทึก status_history ของ lci_exchange)
+# ---- เปลี่ยนสถานะ (triggers audit both observation tables)
 c.execute("INSERT OR REPLACE INTO session_ctx VALUES ('user','QA Lead · qa_review.py'), ('reason','M4 QA: ค่าตรงต้นฉบับและตามรอยได้')")
 c.executemany("UPDATE lci_exchange SET review_status='reviewed' WHERE exchange_id=?", [(e,) for e in lci_ok])
 if dup == 0 and untraced == 0:
@@ -87,3 +88,5 @@ for t in ("lci_exchange", "stat_observation"):
     print(t, c.execute(f"SELECT review_status, COUNT(*) FROM {t} GROUP BY 1").fetchall())
 print("history rows:", c.execute("SELECT COUNT(*) FROM status_history").fetchone()[0],
       "| FAIL checks:", sum(r[3] == "FAIL" for r in report))
+c.close()
+sys.exit(1 if any(r[3] == 'FAIL' for r in report) else 0)

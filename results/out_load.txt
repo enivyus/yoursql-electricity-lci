@@ -1,8 +1,8 @@
-table          csv_rows  loaded rejected
-source               10      10        0
-location              1       1        0
-unit                 11      11        0
-flow                 29      29        0
-process               1       1        0
-lci_exchange         31      31        0
-stat_observation      857     857        0
+table          loaded rejected
+source             10        0
+location            1        0
+unit               11        0
+flow               29        0
+process             1        0
+lci_exchange       31        0
+stat_observation  857        0

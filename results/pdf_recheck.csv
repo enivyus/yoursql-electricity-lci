@@ -1,0 +1,32 @@
+exchange_id,page,location,amount_original,unit_original,result,note
+1,5,Table 1 (p.5) แถว 1,"5,615,021",MMBTU,matched,
+2,5,Table 1 (p.5) แถว 2,"1,098,153",m3,matched,
+3,5,Table 1 (p.5) แถว 3,"1,200",liter,matched,
+4,5,Table 1 (p.5) แถว 4,400,liter,matched,
+5,5,Table 1 (p.5) แถว 5,125,liter,matched,
+6,5,Table 1 (p.5) แถว 6,1.00E-04,kg,matched,
+7,5,Table 1 (p.5) แถว 7,240,tons,matched,
+8,5,Table 1 (p.5) แถว 8,144,tons,matched,
+9,5,Table 1 (p.5) แถว 9,35,tons,matched,
+10,5,Table 1 (p.5) แถว 10,5,tons,matched,
+11,5,Table 1 (p.5) แถว 11,1.5,tons,matched,
+12,5,Table 1 (p.5) แถว 12,5,tons,matched,
+13,5,Table 1 (p.5) แถว 13,1,tons,matched,
+14,5,Table 1 (p.5) แถว 14,6,tons,matched,
+15,5,Table 1 (p.5) แถว 15,1.5,tons,matched,
+16,5,Table 1 (p.5) แถว 16,1.5,tons,matched,
+17,5,Table 1 (p.5) แถว 17,6,tons,matched,
+18,5,Table 1 (p.5) แถว 18,1,tons,matched,
+19,5,Table 1 (p.5) แถว 19,"21,030",kgSO2,matched,
+20,5,Table 1 (p.5) แถว 20,"15,1361",kgNOx,matched,held: malformed number
+21,5,Table 1 (p.5) แถว 21,"324,686,938",kgCO2,matched,
+22,5,Table 1 (p.5) แถว 22,"40,460",kgPM,matched,
+23,5,Table 1 (p.5) แถว 23,6.09,mg/l,matched,"held: concentration, not annual mass"
+24,5,Table 1 (p.5) แถว 24,52,mg/l,matched,"held: concentration, not annual mass"
+25,5,Table 1 (p.5) แถว 25,25,mg/l,matched,"held: concentration, not annual mass"
+26,5,Table 1 (p.5) แถว 26,"1,646",mg/l,matched,"held: concentration, not annual mass"
+27,5,Table 1 (p.5) แถว 27,"7,850",kg,matched,
+28,5,Table 1 (p.5) แถว 28,"1,650",kg,matched,
+29,5,Table 1 (p.5) แถว 29,480,kg,matched,
+30,7,ข้อความหัวข้อ 3.2 (p.7),"727,696",MWh,matched,
+31,7,ข้อความหัวข้อ 3.2 (p.7),"259,200",tons-steam,matched,
